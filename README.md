@@ -5,7 +5,7 @@
   - [Windows](#windows)
   - [macOS](#macos)
 - [How to pull the Docker image](#installation)
-- [How to create the Docker container](#run)
+- [How to create the Docker container (i.e. docker run command](#run)
     - [GNU/Linux](#gnulinux)
     - [Other](#other)
     - [Stop](#stop)
