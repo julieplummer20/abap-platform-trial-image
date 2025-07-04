@@ -5,7 +5,7 @@
   - [Windows](#windows)
   - [macOS](#macos)
 - [How to pull the Docker image](#installation)
-- [How to create the Docker container](#run)
+- [How to create and run the Docker container - using docker run](#run)
     - [GNU/Linux](#gnulinux)
     - [Other](#other)
     - [Stop](#stop)
@@ -89,6 +89,7 @@ The 2022 version of ABAP Cloud Developer Trial, runs on [Windows Subsystem for L
     memory=20GB
     localhostForwarding=true
     ```
+> [!IMPORTANT] 
   > **IMPORTANT**: By default, Docker assigns itself only half the available memory. Therefore, you need to specify enough memory in **`.wslconfig`**; we recommend **20GB**.
     
 3. In order to activate the changes, you need to shut down the WSL subsystem using the following command: 
@@ -121,7 +122,7 @@ Also, make sure you have assigned enough resources to your Desktop Docker:
     docker pull sapse/abap-cloud-developer-trial:<TAGNAME>
     ```
 
-<h1><a id="run">How to create a Docker container</a></h1>
+<h1><a id="run">How to create and run Docker container</a></h1>
 
 The system expects host name be *vhcala4hci*, all other host names will prevent the system from starting.
 Use the following command and watch the output carefully:
@@ -137,6 +138,14 @@ docker run --stop-timeout 3600 -it --name a4h -h vhcala4hci sapse/abap-cloud-dev
 ```bash
 docker run --stop-timeout 3600 -i --name a4h -h vhcala4hci -p 3200:3200 -p 3300:3300 -p 8443:8443 -p 30213:30213 -p 50000:50000 -p 50001:50001 sapse/abap-cloud-developer-trial:<TAGNAME> -skip-limits-check
 ```
+
+> [!TIP] 
+> In some cases, your Hardware Key may stop working at some point. This may be because the IP address of the container is stable but the MAC address has changed since your last login. If so, add a stable MAC address to your docker run command as in the following example, replacing the placeholder `02:42:ac:11:00:11` with your own MAC address:
+> 
+> ```
+> docker run --mac-address 02:42:ac:11:00:11 my_container
+> ```
+> 
 
 By default, Docker takes only 10 seconds to shut down. Therefore, we start the container in interactive mode (*-i*), so that we can stop the system gracefully using the key stroke Ctrl-C. However, we also use the parameter `--stop-timeout` which causes that Docker will give the SAP HANA database (HDB) enough time to write its In-Memory database onto disk upon shutdown request.
 
