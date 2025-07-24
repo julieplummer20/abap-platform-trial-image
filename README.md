@@ -43,15 +43,19 @@ and add the user tag "#abap_trial". I will try to monitor these questions, but o
 - 150GB Disk
 
 <h2><a id="macos">macOS</a></h2>
-Previously, ABAP Platform Trial ran on both Intel and M* processors. Since then, Apple has upgraded its iOS. Thus, on the newest iOS version, ABAP Cloud Developer Trial runs only on a Mac with an Intel processor. This is not a SAP-specific issue. So for now, you have two options:
+We have successfully tested ABAP Cloud Developer Trial with the following setup:
+•	Apple MacBook M2 Pro (Apple Silicone)
+•	32GB RAM
+•	macOS Sequoia 15.5
+•	DockerDesktop 4.41.2
+•	Docker Engine 28.1.1
 
-Run Docker Desktop with a MacBook that has an Intel processor.
-Use the UTM app to emulate an AMD64 Linux distro via Apple QEMU.
-Many many thanks to Community member [dylan-drummond](https://community.sap.com/t5/user/viewprofilepage/user-id/197587) for researching this. Dylan has written an exhaustive guide to this: 
+Therefore, it appears that ABAP Cloud Developer Trial runs on both AMD  and M*-Series processors, provided you have installed the newest version of macOS. 
+(On some older versions of iOS, ABAP Cloud Developer Trial only ran on a Mac with an Intel processor, not an M*-Series processor.)
+Many many thanks to Community members [Dylan Drummond](https://community.sap.com/t5/user/viewprofilepage/user-id/197587) and [Tom Hoepping](https://community.sap.com/t5/user/viewprofilepage/user-id/6300) for testing this and bringing it to my attention. 
 
+Dylan has written an exhaustive guide to this: 
 [M-series Apple Chip MacBooks and Abap Platform Trial containers using Docker and Podman ](https://community.sap.com/t5/technology-blogs-by-members/m-series-apple-chip-macbooks-and-abap-platform-trial-containers-using/ba-p/13593215)
-
-This is Community content, so consume at your own risk; however, this could be very helpful to many Mac users.
 
 Also, make sure you have assigned enough resources to your Desktop Docker because your Docker runs in a VM which contains GNU/Linux and that underlying VM does not share hardware resources with the host machine without explicit assignment:
 
@@ -70,6 +74,7 @@ The 2022 version of ABAP Cloud Developer Trial, runs on [Windows Subsystem for L
     memory=20GB
     localhostForwarding=true
     ```
+> [!IMPORTANT] 
   > **IMPORTANT**: By default, Docker assigns itself only half the available memory. Therefore, you need to specify enough memory in **`.wslconfig`**; we recommend **20GB**.
     
 3. In order to activate the changes, you need to shut down the WSL subsystem using the following command: 
@@ -102,7 +107,7 @@ Also, make sure you have assigned enough resources to your Desktop Docker:
     docker pull sapse/abap-cloud-developer-trial:<TAGNAME>
     ```
 
-<h1><a id="run">How to create and run a Docker container</a></h1>
+<h1><a id="run">How to create and run Docker container</a></h1>
 
 The system expects host name be *vhcala4hci*, all other host names will prevent the system from starting.
 Use the following command and watch the output carefully:
@@ -118,6 +123,14 @@ docker run --stop-timeout 3600 -it --name a4h -h vhcala4hci sapse/abap-cloud-dev
 ```bash
 docker run --stop-timeout 3600 -i --name a4h -h vhcala4hci -p 3200:3200 -p 3300:3300 -p 8443:8443 -p 30213:30213 -p 50000:50000 -p 50001:50001 sapse/abap-cloud-developer-trial:<TAGNAME> -skip-limits-check
 ```
+
+> [!TIP] 
+> In some cases, your Hardware Key may stop working at some point. This may be because the IP address of the container is stable but the MAC address has changed since your last login. If so, add a stable MAC address to your docker run command as in the following example, replacing the placeholder `02:42:ac:11:00:11` with your own MAC address:
+> 
+> ```
+> docker run --mac-address 02:42:ac:11:00:11 my_container
+> ```
+> 
 
 By default, Docker takes only 10 seconds to shut down. Therefore, we start the container in interactive mode (*-i*), so that we can stop the system gracefully using the key stroke Ctrl-C. However, we also use the parameter `--stop-timeout` which causes that Docker will give the SAP HANA database (HDB) enough time to write its In-Memory database onto disk upon shutdown request.
 
@@ -293,12 +306,10 @@ The user name is **DEVELOPER**.
 The client is either **001** for development or **000** for some admin tasks.
 
 The password is:
-- ABAP Cloud Developer Trial 2022, SP01:              *`ABAPtr2022#01`*
-- ABAP Cloud Developer Trial 2022:              *`ABAPtr2022#00`*
-- ABAP Platform Trial 1909, SP01:               *`ABAPtr1909`* - Note that we have withdrawn this version
+- ABAP Cloud Developer Trial 2023, SP00:        *`ABAPtr2023#00`*
+- ABAP Cloud Developer Trial 2022, SP01:        *`ABAPtr2022#01`*
 
 This is also predefined (same password) for client 000, client 001:  SAP* , DDIC.
-
 
 <h2><a id="browser">Browser</a></h2>
 
