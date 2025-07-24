@@ -13,7 +13,7 @@
 - [Known Issues; Notes](#known-issues)
 
 
-<h1><a id="support">Important</a></h1>
+<h1><a id="support">Important</a></h1> 
 
 > [!WARNING] 
 > To pull the image, click on the tab **Tags** and choose the correct Docker command from there.
@@ -384,7 +384,7 @@ The error message does not affect SAP Cloud Connector (SCC) functions and will b
 
 <h2><a id="error-scc-stop"></a>stopping Cloud Connector since port 8443 appears to be used by another process</h2>
 
-Very rarely, you may get a second error:
+Very rarely you may get a second error:
 
 ```bash
 ERROR: shell command for retrieving PID of process bound to SCC port failed — com. sap. SCC. util. ShellComm and $ExecutionException: Command lsof -i :8443 failed, caused by java.io.IOException: Cannot run lsof - execvpe failed (E NOENT - No such file or directory) 
@@ -400,4 +400,4 @@ Do not omit the following parameter:
 ```
 The script asks for the agreement, if it's missing, but you may be asked again when you stop and start the container again.
 
-  +  
+  +
