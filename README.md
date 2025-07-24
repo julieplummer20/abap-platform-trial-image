@@ -13,7 +13,7 @@
 - [Known Issues; Notes](#known-issues)
 
 
-<h1><a id="support">Important</a></h1> 
+<h1><a id="support">Important</a></h1>
 
 > [!WARNING] 
 > To pull the image, click on the tab **Tags** and choose the correct Docker command from there.
