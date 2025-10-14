@@ -311,8 +311,6 @@ You must edit the Hosts file – on local machine, not inside Docker
 *Source:
 <https://answers.sap.com/questions/13296560/abap-trial-sap-abap-platform-1909-start-fiori-laun.html>*## SAP HANA Studio
 
-You can install the HANA tools as Eclipse plugin
--\> <https://tools.hana.ondemand.com/#hanatools>
 
 ## SAP GUI for Java ("JavaGUI"), connect to: <!-- omit from toc --> 
 Ignore the System, Logon, Security, Language tabs. Go to Advanced tab > Expert Mode > enter IP address OR mapped DNS name of VM of your SAP System + SAP instance number (default = 00).
@@ -326,7 +324,10 @@ Depending on the Hypervisor you use, you may need to set up port forwarding from
 *(From: https://blogs.sap.com/2019/10/01/as-abap-7.52-sp04-developer-edition-concise-installation-guide/comment-page-1/#comment-625449 )
 
 
-## SAP HANA database - via external tools, e.g. SAP HANA Studio, DBeaver, WebIDE <!-- omit from toc --> 
+## SAP HANA database - connect via Eclipse plugin, or external tools, e.g. SAP HANA Studio, DBeaver <!-- omit from toc --> 
+
+You can install the HANA tools as an Eclipse plugin
+-\> <https://tools.hana.ondemand.com/#hanatools>
 
 ### Solution 1, connect to: <!-- omit from toc --> 
 
