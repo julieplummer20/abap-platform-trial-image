@@ -12,7 +12,6 @@
 - [Additional Information](#additional-information)
 - [Known Issues; Notes](#known-issues)
 
-
 <h1><a id="support">Important</a></h1> 
 
 > NOTE: To pull the image, click on the tab **Tags** and choose the correct Docker command from there.
@@ -164,19 +163,14 @@ docker start -ai a4h
 
 <h2><a id="run-troubleshooting-notes">Notes</a></h2>
 
-The init process of the container run checks for the correct hostname and for the Linux kernel limits.
-
-In the case you want to skip the Linux kernel limits check, add the parameter `-skip-limits-check` to *docker run* command line you can find above.
+The init process of the container run checks for the correct hostname and for the Linux kernel limits. If you want to skip the Linux kernel limits check add the parameter `-skip-limits-check` to *docker run* command line you can find above.
 
 If you used the docker run command several lines above on this page and the container exited with the following error message:
 
 ```bash
 Cannot continue because of insufficient system limits configuration!
 ```
-
-If you want to continue without recommended limits,
-run again with the parameter -skip-limits-check
-
+and if you want to continue without recommended limits, run again with the parameter -skip-limits-check
 
 Appending the parameter `-skip-limits-check` to the run command and executing the run command again will most probably lead to a container name collision error with the following symptoms:
 
@@ -280,7 +274,7 @@ If you run into the need to expose too many ports, you can consider using `--net
 
 Do not use the parameter *-P* (the capitalized P, case matters) because that exposes container ports on random host ports and many SAP clients requires exact ports which cannot be changed (e.g. if the container's port 3200 is exposed as the port 54356, as far as we know you will not be able to configure SAPGUI for Windows to connect to that port).
 
-In the case you are on Windows and you want to connect to the containers IP directly without the need to expose the ports with the parameter *-p*, you may need to update their IP routes to get their TCP/IP packets correctly routed from their host machine to the docker container (which is running in a virtualized GNU/Linux). Self-study materials:
+If you are on Windows and you want to connect to the containers IP directly without the need to expose the ports with the parameter *-p*, you may need to update their IP routes to get their TCP/IP packets correctly routed from their host machine to the docker container (which is running in a virtualized GNU/Linux). Self-study materials:
 - https://docs.docker.com/docker-for-windows/networking/
 - https://github.com/docker/for-win/issues/221
 
@@ -386,9 +380,9 @@ For technical reasons, we have delivered this initial shipment of SAP Cloud Deve
 ```bash
 ERROR: shell command for retrieving PID of process bound to SCC port failed
 ```
-The error message does not affect SAP Cloud Connector (SCC) functions and will be removed in a future version of SCC.
+The error message does not affect the functions of SAP Cloud Connector (SAP CC) and will be removed in a future version of SCC.
 
-<h2><a id="error-scc-stop"></a>stopping Cloud Connector since port 8443 appears to be used by another process</h2>
+<h2>stopping Cloud Connector since port 8443 appears to be used by another process</h2>
 
 Very rarely you may get a second error:
 
@@ -405,5 +399,3 @@ Do not omit the following parameter:
 -agree-to-sap-license 
 ```
 The script asks for the agreement, if it's missing, but you may be asked again when you stop and start the container again.
-
-  +
