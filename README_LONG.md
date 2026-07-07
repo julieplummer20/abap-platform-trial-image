@@ -57,7 +57,7 @@ and add the user tag "#abap_trial". I will try to monitor these questions, but o
 
 - 4 CPUs
 - 16GB RAM
-- 150GB Disk
+- 150GB Disk 
 
 <h2><a id="macos">macOS</a></h2>
 We have successfully tested ABAP Cloud Developer Trial with the following setup:
