@@ -88,11 +88,11 @@ The 2022 version of ABAP Cloud Developer Trial, runs on [Windows Subsystem for L
 
     ```
     [wsl2]
-    memory=20GB
+    memory=24GB
     localhostForwarding=true
     ```
 > [!IMPORTANT] 
-  > **IMPORTANT**: By default, Docker assigns itself only half the available memory. Therefore, you need to specify enough memory in **`.wslconfig`**; we recommend **20GB**.
+  > **IMPORTANT**: By default, Docker assigns itself only half the available memory. Therefore, you need to specify enough memory in **`.wslconfig`**; we recommend **24GB**.
     
 3. In order to activate the changes, you need to shut down the WSL subsystem using the following command: 
 

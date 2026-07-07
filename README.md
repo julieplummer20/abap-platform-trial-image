@@ -15,14 +15,12 @@
 
 <h1><a id="support">Important</a></h1>
 
-> [!WARNING] 
-> To pull the image, click on the tab **Tags** and choose the correct Docker command from there.
+> NOTE: To pull the image, click on the tab **Tags** and choose the correct Docker command from there.
 > **DO NOT** attempt to pull the image from this page (Overview).
 
-> [!IMPORTANT] 
-Since ABAP Cloud Developer Trial is a free offering for education and demo purposes only, we offer it with SAP Community support. That means that no primary support is available for this product. 
-To get Community Support, create a new question in the SAP Community - go to [SAP Community - ABAP Development Forum](https://community.sap.com/t5/forums/postpage/choose-node/true/product-id/833755570260738661924709785639136/board-id/technology-questions) 
-and add the user tag "#abap_trial". I will try to monitor these questions, but other experienced ABAP users / mentors also see them and often provide support.
+> IMPORTANT: Since ABAP Cloud Developer Trial is a free offering for education and demo purposes only, we offer it with SAP Community support. That means that no primary support is available for this product. 
+> 
+> To get Community Support, create a new question in the SAP Community - go to [SAP Community - ABAP Development Forum](https://community.sap.com/t5/forums/postpage/choose-node/true/product-id/833755570260738661924709785639136/> board-id/technology-questions) and add the user tag "#abap_trial". I will try to monitor these questions, but other experienced ABAP users / mentors also see them and often provide support.
 
 
 <h1><a id="before-you-pull-the-image">Before you pull the image</a></h1>
@@ -33,8 +31,7 @@ and add the user tag "#abap_trial". I will try to monitor these questions, but o
 
 <h1><a id="requirements">Requirements</a></h1>
 
-> [!NOTE] 
-> We highly recommend 32GB RAM to run the ABAP Platform Trial image. The following requirements only cover the resources needed for the Docker environment itself.
+> NOTE: We highly recommend 32GB RAM to run the ABAP Platform Trial image. The following requirements only cover the resources needed for the Docker environment itself.
 
 <h2><a id="linux">Linux</a></h2>
 
@@ -71,11 +68,10 @@ The 2022 version of ABAP Cloud Developer Trial, runs on [Windows Subsystem for L
 
     ```
     [wsl2]
-    memory=20GB
+    memory=24GB
     localhostForwarding=true
     ```
-> [!IMPORTANT] 
-  > **IMPORTANT**: By default, Docker assigns itself only half the available memory. Therefore, you need to specify enough memory in **`.wslconfig`**; we recommend **20GB**.
+> IMPORTANT: By default, Docker assigns itself only half the available memory. Therefore, you need to specify enough memory in **`.wslconfig`**; we recommend **24GB**.
     
 3. In order to activate the changes, you need to shut down the WSL subsystem using the following command: 
 
@@ -124,8 +120,7 @@ docker run --stop-timeout 3600 -it --name a4h -h vhcala4hci sapse/abap-cloud-dev
 docker run --stop-timeout 3600 -i --name a4h -h vhcala4hci -p 3200:3200 -p 3300:3300 -p 8443:8443 -p 30213:30213 -p 50000:50000 -p 50001:50001 sapse/abap-cloud-developer-trial:<TAGNAME> -skip-limits-check
 ```
 
-> [!TIP] 
-> In some cases, your Hardware Key may stop working at some point. This may be because the IP address of the container is stable but the MAC address has changed since your last login. If so, add a stable MAC address to your docker run command as in the following example, replacing the placeholder `02:42:ac:11:00:11` with your own MAC address:
+> TIP: In some cases, your Hardware Key may stop working at some point. This may be because the IP address of the container is stable but the MAC address has changed since your last login. If so, add a stable MAC address to your docker run command as in the following example, replacing the placeholder `02:42:ac:11:00:11` with your own MAC address:
 > 
 > ```
 > docker run --mac-address 02:42:ac:11:00:11 my_container
